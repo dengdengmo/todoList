@@ -1,5 +1,9 @@
 body {
-  background: #ddd;
+  background-image: url(./bg-2.jpg);
+  background-position: 0px center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-size: 100vw;
 }
 #root {
   display: flex;

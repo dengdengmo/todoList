@@ -1,54 +1,101 @@
 .App {
-  color: #fff;
-  border-radius: 4px;
-  margin: 2em;
-  padding: 0 1em;
+  color: #333;
   min-height: 20em;
   min-width: 32em;
-  box-shadow: 0 0 1em hsla(0,0%,0%,0.15);
-  position: relative;
-}
-/* .App::before {
-  content: '';
-  position: absolute;
+  font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',Arial,sans-serif;
+  display: flex;
+  position: fixed;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  filter: blur(30px);
-  z-index: -1;
-  background-image: url(./bg-2.jpg);
-  background-position: 0px center;
+}
+.App>.sidebar {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 20%;
+  min-width: 175px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden
+}
+.App>.sidebar>.sidebar-header {
+  background-color: #fff;
+  color: #34373d;
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border-bottom: 1px solid #ededed
+}
+.App>.sidebar>.sidebar-header .icon-portrait {
+  font-size: 23px;
+  margin-left: 7px;
+}
+.App>.sidebar>.sidebar-header p{
+  font-size: 18px;
+  font-weight: lighter;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 193px;
+}
+.App>.sidebar>.sidebar-header>button{
+  font-size: 17px;
+  background: transparent;
+  color: #767678;
+  border: none;
+  padding: 15px 10px;
+  cursor: pointer;
+}
+.App>.sidebar>.sidebar-header>button:hover {
+  background: #f5f5f5;
+}
+.App>.main{
+  position: relative;
+  flex-grow: 1;
+  flex-shrink: 1;
+  background: transparent;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.App>.main>.header{
+  font-size: 35px;
+  /* font-weight: 200; */
+  height: 150px;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+  padding: 16px 16px 26px 16px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  background-image:linear-gradient(to right bottom, rgb(118, 94, 230), rgb(28, 159, 255)), url(./bg-2.jpg);
+  background-blend-mode: hard-light;
+  mix-blend-mode: hard-light;
+  background-position: center;
   background-size: cover;
   background-attachment: fixed;
-} */
-.App > .todoList> li:nth-child(odd) {
-  background: #eee;
 }
-.App > .todoList> li:nth-child(even) {
+
+.App>.main>.todos{
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow-y: scroll;
+  margin-right: -17px;
+  padding: 15px;
+  /* border-left: 1px solid #ededed; */
+}
+/* .App .todoList li:nth-child(odd) {
+  background: #fff;
+}
+.App .todoList li:nth-child(even) {
   background: transparent;
-}
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 } */

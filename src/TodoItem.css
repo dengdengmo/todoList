@@ -1,9 +1,42 @@
+.todoList>li {
+    margin-top: 2px;
+    height: 50px;
+    background: #fff;
+    border-radius: 3px;
+}
 .TodoItem {
-    padding: .5em;
+    font-size: 16px;
+    height: 100%;
+    line-height: 100%;
+    padding-right: 0.7em;
     display: flex;
     align-items: center;
+    cursor: pointer;
+}
+.TodoItem>input {
+    visibility: hidden;
+}
+.TodoItem:hover {
+    background: #eee;
 }
 .TodoItem>.title {
     flex-grow: 1;
     padding: 0 .5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.TodoItem .icon-checkbox {
+    font-size: 20px;    
+}
+.TodoItem>.icon-delete {
+   fill: #767678;
+   visibility: hidden;
+   cursor: pointer;
+}
+.TodoItem:hover .icon-delete {
+    visibility: visible
+}
+.TodoItem>.icon-delete:hover {
+    fill: #f11212
 }

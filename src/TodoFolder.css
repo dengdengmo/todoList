@@ -1,0 +1,63 @@
+.TodoFolder{
+    font-size: 16px;
+    /* border: 1px blue solid; */
+    flex-shrink: 1;
+    flex-grow: 1;
+    overflow-x: hidden;
+    min-height: 50px;
+    line-height: 50px;
+    position: relative;
+    margin-top: 1px;
+    display: flex;
+    cursor: pointer;
+}
+.TodoFolder:hover {
+    background: rgb(238, 238, 238)
+}
+.TodoFolder>.icon-pre {
+    margin-top: 13px;
+    margin-left: 13px;
+    margin-right: 10px;
+    font-size: 18px;
+}
+.TodoFolder>.folderName {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-right: 20px;
+}
+.TodoFolder>.icon-delete{
+    position: absolute;
+    right: 8px;
+    top: 15px;
+    padding: 1px 2px;
+    /* font-size: 13px; */
+    visibility: hidden;
+}
+
+.TodoFolder>li>i{
+    font-weight: 200;
+    font-size: 0.8em;
+    padding-right: 5px;
+}
+
+.active{
+    background: #eee;
+}
+
+
+.active>i,.active .icon-delete{
+    fill: #767678;
+    visibility: visible;
+}
+.active>i,.active .icon-delete:hover {
+    fill: #f11212
+}
+
+.icon {
+    width: 1.3em; height: 1.3em;
+    vertical-align: 0em;
+    fill: #465efc;
+    overflow: hidden;
+    cursor: pointer;
+ }

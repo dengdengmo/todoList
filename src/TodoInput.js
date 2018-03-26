@@ -1,30 +1,40 @@
 import React, { Component } from 'react';
 import './TodoInput.css';
+import './iconfont'
 
-class TodoInput extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-          placeholder: '请输入事项'
-        }
-    }
-    render() {
-        return <input type="text" value={this.props.content} 
-        					className="TodoInput" placeholder={this.state.placeholder}
-        					onChange={this.changeTitle.bind(this)}
-         					onKeyPress={this.submit.bind(this)} />
-    }
-    submit(e) {
-        if(e.key === 'Enter') {
-          this.props.onSubmit(e)
-        }
-    }
-    changeTitle(e) {
-        this.setState({
-          placeholder: ''
-        })
-        this.props.onChange(e)
-    }
+export default function(props) {
+	return (
+		<div className="TodoInput" >
+			<button className="addTodo-btn">
+				<svg className="icon" aria-hidden="true" onClick={add.bind(null, props)}>
+					<use xlinkHref="#icon-add1"></use>
+				</svg>
+			</button>
+			<input type="text" value={props.content}
+				className="addTodo-input" placeholder={props.placeholder}
+				onChange={changeTitle.bind(null, props)}
+				onKeyPress={submit.bind(null, props)} />
+		</div>
+	)
 }
-
-export default TodoInput;
+function add(props, e) {
+	// e.preventDefault()
+	if (props.content !== '') {
+		props.onSubmit(props.content);
+	} else {
+		alert('不能为空')
+	}
+}
+function submit(props, e) {
+	
+	if (e.key === 'Enter') {
+		if (e.target.value.trim() !== '') {
+			props.onSubmit(props.content)
+		} else {
+			alert('不能为空')
+		}
+	}
+}
+function changeTitle(props, e){
+    props.onChange(e);
+}

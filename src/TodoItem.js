@@ -13,11 +13,9 @@ class TodoItem extends Component {
 				</svg>
 				</label>
 				<span className="title">{this.props.todo.title}</span>
-
 				<svg className="icon icon-delete" aria-hidden="false" onClick={this.delete.bind(this)}>
 					<use xlinkHref="#icon-delete1"></use>
 				</svg>
-
 			</div>
 		)
 	}
@@ -28,5 +26,4 @@ class TodoItem extends Component {
 		this.props.onDelete(e, this.props.todo)
 	}
 }
-
 export default TodoItem;

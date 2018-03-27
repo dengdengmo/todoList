@@ -3,6 +3,7 @@ import 'normalize.css';
 import './reset.css';
 import './App.css';
 import './iconfont'
+import copyByJSON from './copyByJSON'
 import UserDialog from './UserDialog'
 import TodoInput from './TodoInput'
 import TodoFolder from './TodoFolder'
@@ -23,12 +24,12 @@ class App extends Component {
     let user = getCurrentUser ()
     if(user) {
       FolderModel.getByUser(user, (folderList) => {
-        let stateCopy = JSON.parse(JSON.stringify(this.state))
+        let stateCopy = copyByJSON(this.state)
         stateCopy.folderList = folderList
         this.setState(stateCopy)
       })
       TodoModel.getByUser(user, (todoList) => {
-        let stateCopy = JSON.parse(JSON.stringify(this.state))
+        let stateCopy = copyByJSON(this.state)
         stateCopy.todoList = todoList
         this.setState(stateCopy)
       })
@@ -113,7 +114,7 @@ class App extends Component {
 
   signOut() {
     signOut()
-    let stateCopy = JSON.parse(JSON.stringify(this.state))
+    let stateCopy = copyByJSON(this.state)
     stateCopy.user = {}
     this.setState(this.state = {
       user: getCurrentUser() || {},
@@ -122,17 +123,17 @@ class App extends Component {
     })
   }
   onSignUpOrSignIn(user,e,folderList) {
-    let stateCopy = JSON.parse(JSON.stringify(this.state))
+    let stateCopy = copyByJSON(this.state)
     stateCopy.user = user
     this.setState(stateCopy)
     if(user) {
       FolderModel.getByUser(user, (folderList) => {
-        let stateCopy = JSON.parse(JSON.stringify(this.state))
+        let stateCopy = copyByJSON(this.state)
         stateCopy.folderList = folderList
         this.setState(stateCopy)
       })
       TodoModel.getByUser(user, (todoList) => {
-        let stateCopy = JSON.parse(JSON.stringify(this.state))
+        let stateCopy = copyByJSON(this.state)
         stateCopy.todoList = todoList
         this.setState(stateCopy)
       })
@@ -159,9 +160,7 @@ class App extends Component {
     return false
   }
   toggle(e, todo) {
-    let stateCopy = JSON.parse(JSON.stringify(this.state))
     let oldStatus = todo.status
-    console.log(todo)
     todo.status = todo.status === 'completed' ? '' : 'completed'
     TodoModel.update(todo, () => {
       this.setState(this.state)
@@ -181,6 +180,8 @@ class App extends Component {
     })
   }
   deleteTodo(event, todo) {
+    let isConfirmed = window.confirm('确定要删除该事项吗？') //需要在confirm前加上window
+    if(isConfirmed ==! true)  return
     TodoModel.destroy(todo.id, () => {
       todo.deleted = true
       this.setState(this.state)
@@ -221,7 +222,7 @@ class App extends Component {
   }
 
   switchFolder(e) {
-    let stateCopy = JSON.parse(JSON.stringify(this.state))
+    let stateCopy = copyByJSON(this.state)
     let folderArr = stateCopy.folderList.filter((item, index) => {
       return item.name === e.currentTarget.textContent
     })
@@ -239,7 +240,7 @@ class App extends Component {
 		}
     let isConfirmed = window.confirm('确定要删除该分组及其分组下的事项吗？') //需要在confirm前加上window
     if(isConfirmed ==! true)  return  // 确定删除 执行以下代码
-    let stateCopy = JSON.parse(JSON.stringify(this.state))
+    let stateCopy = copyByJSON(this.state)
     let folderListLen = stateCopy.folderList.length
     FolderModel.destroy(folder.id, () => {
       let index = stateCopy.folderList.findIndex((item) => {

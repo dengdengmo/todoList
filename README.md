@@ -1,7 +1,7 @@
 
 # Just-Do 
 
-这是一个在线待办事项应用， [点击这里]() 进入应用页
+这是一个在线待办事项应用， [点击这里](https://dengdengmo.github.io/todoList/build/index.html) 进入应用页
 
 ### 你可以用它做什么
 

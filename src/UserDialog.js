@@ -88,7 +88,7 @@ class UserDialog extends Component {
 
 	/**改变数据函数 */
 	changeFormData(key, e) {
-		let stateCopy = JSON.parse(JSON.stringify(this.state))
+		let stateCopy = copyByJSON(this.state)
 		stateCopy.formData[key] = e.target.value
 		this.setState(stateCopy)
 	}
@@ -116,12 +116,12 @@ class UserDialog extends Component {
 		)
 	}
 	showForgotPassword() {
-		let stateCopy = JSON.parse(JSON.stringify(this.state))
+		let stateCopy = copyByJSON(this.state)
 		stateCopy.selectedTab = 'forgotPassword'
 		this.setState(stateCopy)
 	}
 	returnToSignIn(){
-		let stateCopy = JSON.parse(JSON.stringify(this.state))
+		let stateCopy = copyByJSON(this.state)
 		stateCopy.selectedTab = 'signInOrSignUp'
 		this.setState(stateCopy)
 	}
